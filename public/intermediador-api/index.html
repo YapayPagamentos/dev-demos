@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intermediador API</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container justify-content-center">
+            <a class="navbar-brand mr-0 font-weight-bold" href="#">Yapay - Demo Checkout</a>
+        </div>
+    </nav>
+
+    <form action="pay.php" method="POST">
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header font-weight-bold">Dados do comprador</div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="userName" class="form-label mb-0">Nome completo</label>
+                                                <input type="text" name="user_name" id="username" class="form-control"
+                                                    required placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="userCpf" class="form-label mb-0">CPF</label>
+                                                <input type="text" name="user_cpf" id="userCpf" class="form-control"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="userEmail" class="form-label mb-0">E-mail</label>
+                                                <input type="text" name="user_email" id="userEmail" class="form-control"
+                                                    required>
+                                                <small class="text-muted">Iremos enviar a confirmação da sua compra para
+                                                    este
+                                                    e-mail</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="userCpf" class="form-label mb-0">Telefone de contato</label>
+                                                <input type="text" name="user_cpf" id="userCpf" class="form-control"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex align-items-center">
+                                        <span class="mr-2">Compra com CNPJ?</span>
+                                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <a class="nav-link active" id="pills-cnpjno-tab" data-toggle="pill"
+                                                    href="#pills-cnpjno" role="tab" aria-controls="pills-cnpjno"
+                                                    aria-selected="true">Não</a>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <a class="nav-link" id="pills-cnpjyes-tab" data-toggle="pill"
+                                                    href="#pills-cnpjyes" role="tab" aria-controls="pills-cnpjyes"
+                                                    aria-selected="false">Sim</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div class="tab-pane fade show active" id="pills-cnpjno" role="tabpanel"
+                                            aria-labelledby="pills-cnpjno-tab"></div>
+                                        <div class="tab-pane fade mt-3" id="pills-cnpjyes" role="tabpanel"
+                                            aria-labelledby="pills-cnpjyes-tab">
+                                            <div class="row">
+                                                <div class="col-12 col-md-4">
+                                                    <div class="mb-3">
+                                                        <label for="userName" class="form-label">CNPJ</label>
+                                                        <input type="text" name="user_name" id="username"
+                                                            class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <div class="mb-3">
+                                                        <label for="userName" class="form-label">Inscrição
+                                                            municipal</label>
+                                                        <input type="text" name="user_name" id="username"
+                                                            class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <div class="mb-3">
+                                                        <label for="userName" class="form-label">Razão social</label>
+                                                        <input type="text" name="user_name" id="username"
+                                                            class="form-control" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <div class="card">
+                                <div class="card-header font-weight-bold">Endereço de entrega</div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-md-3">
+                                            <div class="mb-3">
+                                                <label for="userName" class="form-label">CEP</label>
+                                                <input type="text" name="user_name" id="username" class="form-control"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-7">
+                                            <div class="mb-3">
+                                                <label for="userName" class="form-label">Endereço</label>
+                                                <input type="text" name="user_cpf" id="cpf" class="form-control"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-2">
+                                            <div class="mb-3">
+                                                <label for="userName" class="form-label">Número</label>
+                                                <input type="text" name="user_cpf" id="cpf" class="form-control"
+                                                    required>
+                                                <!-- Existem endereços que usam letras na "numeração", então não é indicado usar type=number -->
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="userName" class="form-label">Complemento</label>
+                                                <input type="text" name="user_cpf" id="cpf" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="userName" class="form-label">Bairro</label>
+                                                <input type="text" name="user_cpf" id="cpf" class="form-control"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="userName" class="form-label">Cidade</label>
+                                                <input type="text" name="user_cpf" id="cpf" class="form-control"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="userName" class="form-label">Estado</label>
+                                                <select class="form-select" id="inputState" name="state" required>
+                                                    <option value=""></option>
+                                                    <option value="AC">Acre</option>
+                                                    <option value="AL">Alagoas</option>
+                                                    <option value="AP">Amapá</option>
+                                                    <option value="AM">Amazonas</option>
+                                                    <option value="BA">Bahia</option>
+                                                    <option value="CE">Ceará</option>
+                                                    <option value="DF">Distrito Federal</option>
+                                                    <option value="ES">Espírito Santo</option>
+                                                    <option value="GO">Goiás</option>
+                                                    <option value="MA">Maranhão</option>
+                                                    <option value="MT">Mato Grosso</option>
+                                                    <option value="MS">Mato Grosso do Sul</option>
+                                                    <option value="MG">Minas Gerais</option>
+                                                    <option value="PA">Pará</option>
+                                                    <option value="PB">Paraíba</option>
+                                                    <option value="PR">Paraná</option>
+                                                    <option value="PE">Pernambuco</option>
+                                                    <option value="PI">Piauí</option>
+                                                    <option value="RJ">Rio de Janeiro</option>
+                                                    <option value="RN">Rio Grande do Norte</option>
+                                                    <option value="RS">Rio Grande do Sul</option>
+                                                    <option value="RO">Rondônia</option>
+                                                    <option value="RR">Roraima</option>
+                                                    <option value="SC">Santa Catarina</option>
+                                                    <option value="SP">São Paulo</option>
+                                                    <option value="SE">Sergipe</option>
+                                                    <option value="TO">Tocantins</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <div class="card">
+                                <div class="card-header font-weight-bold">Opções de pagamento</div>
+                                <div class="card-body">
+
+                                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
+                                                href="#pills-home" role="tab" aria-controls="pills-home"
+                                                aria-selected="true">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                    class="bi bi-upc-scan mr-2" fill="currentColor"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />
+                                                    <path
+                                                        d="M3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z" />
+                                                </svg>
+                                                <span>Cartão de crédito</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
+                                                href="#pills-profile" role="tab" aria-controls="pills-profile"
+                                                aria-selected="false">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                    class="bi bi-credit-card-2-front mr-2" fill="currentColor"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 3H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z" />
+                                                    <path
+                                                        d="M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M2 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                                                </svg>
+                                                <span>Boleto</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                            aria-labelledby="pills-home-tab">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="userName" class="form-label">Número do
+                                                            cartão</label>
+                                                        <input type="text" name="user_name" id="username"
+                                                            class="form-control" required="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="userName" class="form-label">Nome do titular</label>
+                                                        <input type="text" name="user_name" id="username"
+                                                            class="form-control" required="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="userName" class="form-label">Vencimento do
+                                                            cartão</label>
+                                                        <div class="input-group">
+                                                            <select class="form-select">
+                                                                <option selected>Mês</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                                <option value="7">7</option>
+                                                                <option value="8">8</option>
+                                                                <option value="9">9</option>
+                                                                <option value="10">10</option>
+                                                                <option value="11">11</option>
+                                                                <option value="12">12</option>
+                                                            </select>
+                                                            <select class="form-select">
+                                                                <option selected>Ano</option>
+                                                                <option value="2020">2020</option>
+                                                                <option value="2021">2021</option>
+                                                                <option value="2022">2022</option>
+                                                                <option value="2023">2023</option>
+                                                                <option value="2024">2024</option>
+                                                                <option value="2025">2025</option>
+                                                                <option value="2026">2026</option>
+                                                                <option value="2027">2027</option>
+                                                                <option value="2028">2028</option>
+                                                                <option value="2029">2029</option>
+                                                                <option value="2030">2030</option>
+                                                                <option value="2031">2031</option>
+                                                                <option value="2032">2032</option>
+                                                                <option value="2033">2033</option>
+                                                                <option value="2034">2034</option>
+                                                                <option value="2035">2035</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="userName" class="form-label">CVV</label>
+                                                        <input type="text" name="user_name" id="username"
+                                                            class="form-control" required="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="userName" class="form-label">Parcelas</label>
+                                                        <select class="form-select">
+                                                            <option selected>Escolha as parcelas</option>
+                                                            <option value="2020">1x de 14,90 s/juros</option>
+                                                            <option value="2020">2x de 7,40 s/juros</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                            aria-labelledby="pills-profile-tab">
+                                            <div class="d-flex justify-content-center align-items-center d-wrap">
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16"
+                                                    class="bi bi-upc-scan mr-3" fill="currentColor"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z">
+                                                    </path>
+                                                    <path
+                                                        d="M3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z">
+                                                    </path>
+                                                </svg>
+                                                <span class="h6 mt-3 mb-3">O boleto será gerado após a conclusão do
+                                                    pedido com <b>vencimento em 2 dias uteis</b>.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mt-4 mt-md-0">
+                    <div class="sticky-top" style="top: 10px;">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="font-weight-bold">Resumo da compra</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <p class="h6">Itens da compra</p>
+                                    <div class="col">
+                                        <small class="mb-0 font-weight-bold">Camiseta 49ers</small>
+                                        <br>
+                                        <small>2x R$ 49,90</small>
+                                    </div>
+                                    <div class="col text-right">
+                                        <p class="mb-0"> R$ 98,90</p>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center mt-2">
+                                    <div class="col">
+                                        <small class="mb-0 font-weight-bold">Camiseta Jets</small>
+                                        <br>
+                                        <small>1x R$ 49,90</small>
+                                    </div>
+                                    <div class="col text-right">
+                                        <p class="mb-0"> R$ 138,90</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="h6">Frete</p>
+                                <div class="row">
+                                    <div class="col">
+                                        Sedex
+                                    </div>
+                                    <div class="col text-right">
+                                        R$ 14,90
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col">Total</div>
+                                    <div class="col text-right"> R$ 98,90</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-3 mb-5">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h5 class="mb-0">Finalizar pedido</h5>
+                        </div>
+                        <div class="col text-right">
+                            <input type="submit" value="Finalizar compra" class="btn btn-success btn-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+    crossorigin="anonymous"></script>
+
+</html>
